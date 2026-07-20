@@ -1,0 +1,10 @@
+**/node_modules
+**/.git
+**/build
+**/coverage
+**/.env
+**/.env.*
+**/logs
+**/*.log
+.vscode
+.idea
