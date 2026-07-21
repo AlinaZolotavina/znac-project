@@ -1,7 +1,7 @@
 services:
   backend:
+    image: ghcr.io/alinazolotavina/znac-project-backend:latest
     restart: unless-stopped
-    build: ./znac-api
     expose:
       - "4000"
     env_file:
@@ -10,12 +10,8 @@ services:
       - "host.docker.internal:host-gateway"
 
   nginx:
+    image: ghcr.io/alinazolotavina/znac-project-nginx:latest
     restart: unless-stopped
-    build:
-      context: .
-      dockerfile: nginx/Dockerfile
-      args:
-        REACT_APP_API_URL: /api
     ports:
       - "80:80"
       - "443:443"
