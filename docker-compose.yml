@@ -6,6 +6,8 @@ services:
       - "4000"
     env_file:
       - ./znac-api/.env.docker
+    volumes:
+      - ./znac-api/uploads:/app/uploads
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
