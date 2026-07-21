@@ -14,11 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check secrets
-        run: |
-          echo "Host length: ${#HOST}"
-        env:
-          HOST: ${{ secrets.AWS_HOST }}
       - name: Deploy on AWS Lightsail
         uses: appleboy/ssh-action@v1.2.0
         with:
@@ -30,8 +25,8 @@ jobs:
             cd /home/ubuntu/znac-project
 
             git pull --ff-only origin main
-            git -C znac pull --ff-only origin main
-            git -C znac-api pull --ff-only origin main
+            git -C znac pull --ff-only origin master
+            git -C znac-api pull --ff-only origin master
 
             docker compose up -d --build
             docker image prune -f
